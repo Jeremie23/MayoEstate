@@ -14,10 +14,11 @@ class EstatesController < ApplicationController
   def create
     @estate = Estate.new(estate_params)
     @estate.user = current_user
-    @estate.save
-
-    # No need for app/views/restaurants/create.html.erb
-    redirect_to estate_path(@estate)
+    if @estate.save
+      redirect_to @estate, notice: "It was successfully created"
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   def edit
