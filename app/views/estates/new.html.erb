@@ -1,0 +1,8 @@
+<h1>Nouvel Appartement</h1>
+<%= simple_form_for @estate do |f| %>
+<%= f.input :name %>
+<%= f.input :description %>
+<%= f.input :price  %>
+<%= f.submit %>
+<% end %>
+<%= link_to "Retour à la liste des appartements", estates_path %>

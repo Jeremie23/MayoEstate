@@ -1,0 +1,13 @@
+<h1>Liste des appartements</h1>
+
+<ul>
+  <% @estates.each do |estate| %>
+    <li>
+    <%= link_to estate.name, estate_path(estate) %>
+    <p><%= estate.description %></p>
+    <p>Prix : <%= number_to_currency(estate.price) %></p>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to "Nouvel Appartement", new_estate_path %>

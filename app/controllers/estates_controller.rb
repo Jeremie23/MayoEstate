@@ -42,6 +42,6 @@ class EstatesController < ApplicationController
   private
 
   def estate_params
-    params.require(:estate).permit(:name)
+    params.require(:estate).permit(:name, :description, :price)
   end
 end
