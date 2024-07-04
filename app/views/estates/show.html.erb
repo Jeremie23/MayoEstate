@@ -1,0 +1,4 @@
+<h1><%= @estate.name %></h1>
+<p><%= @estate.description %></p>
+<p>Prix : <%= number_to_currency(@estate.price) %></p>
+<%= link_to "Retour à la liste des appartements", estates_path %>
