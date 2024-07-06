@@ -1,6 +1,14 @@
 class EstatesController < ApplicationController
   def index
     @estates = Estate.all
+    # The `geocoded` scope filters only flats with coordinates
+    @markers = @estates.geocoded.map do |estate|
+      {
+        lat: estate.latitude,
+        lng: estate.longitude,
+        info_window_html: render_to_string(partial: "info_window", locals: {estate: estate})
+      }
+    end
   end
 
   def show
@@ -42,6 +50,6 @@ class EstatesController < ApplicationController
   private
 
   def estate_params
-    params.require(:estate).permit(:name, :description, :price)
+    params.require(:estate).permit(:name, :description, :address, :price)
   end
 end
