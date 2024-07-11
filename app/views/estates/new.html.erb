@@ -1,9 +1,36 @@
-<h1>Nouvel Appartement</h1>
-<%= simple_form_for @estate do |f| %>
-<%= f.input :name %>
-<%= f.input :description %>
-<%= f.input :address %>
-<%= f.input :price  %>
-<%= f.submit %>
-<% end %>
-<%= link_to "Retour à la liste des appartements", estates_path %>
+<%= render partial: "shared/navbar"%>
+<div class="d-flex justify-content-center my-3">
+  <div class="card bg-white" style="width: 30rem;">
+    <div class="card-body">
+      <h1 class="card-title display-4 mb-4">Nouvel Appartement</h1>
+
+      <%= simple_form_for @estate do |f| %>
+        <div class="form-group">
+          <%= f.input :name, input_html: { class: "form-control" }, label_html: { class: "form-label" } %>
+        </div>
+
+        <div class="form-group">
+          <%= f.input :description, input_html: { class: "form-control" }, label_html: { class: "form-label" } %>
+        </div>
+
+        <div class="form-group">
+          <%= f.input :address, input_html: { class: "form-control" }, label_html: { class: "form-label" } %>
+        </div>
+
+        <div class="form-group">
+          <%= f.input :price, input_html: { class: "form-control" }, label_html: { class: "form-label" } %>
+        </div>
+
+        <div class="form-group">
+          <%= f.submit "Enregistrer", class: "btn btn-primary" %>
+        </div>
+      <% end %>
+
+      <div class="mt-3">
+        <%= link_to "Retour à la liste des appartements", estates_path, class: "btn btn-secondary" %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= render partial: "shared/footer"%>

@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  root to: "pages#home"
+  root to: "pages#home", as: :home
   get "offers", to: "pages#offers"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

@@ -10,4 +10,33 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
-@import url("https://api.mapbox.com/mapbox-gl-js/v3.1.2/mapbox-gl.css"); // c'est pour la map 
+@import url("https://api.mapbox.com/mapbox-gl-js/v3.1.2/mapbox-gl.css"); // c'est pour la map
+
+.text-muted {
+  color: #6c757d !important;
+}
+
+.lead {
+  font-size: 1.25rem;
+  font-weight: 300;
+}
+
+.list-unstyled {
+  padding-left: 0;
+  list-style: none;
+}
+
+.list-unstyled li {
+  display: flex;
+  align-items: center;
+}
+
+.list-unstyled i {
+  margin-right: 10px;
+  color: #6c757d;
+}
+
+.img-fluid {
+  max-height: 500px;
+  object-fit: cover;
+}

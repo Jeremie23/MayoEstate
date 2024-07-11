@@ -1,23 +1,37 @@
-
-<div class="page-liste-banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://i.pinimg.com/564x/70/9c/85/709c850b624123f6f51bc658d3dc71c7.jpg);">
-    <h1>Liste des appartements</h1>
+<%= render partial: "shared/navbar"%>
+<div class="container my-5">
+  <div class="text-center">
+    <h1 class="display-4 font-weight-bold mb-4">Ajouter une sélection de vos biens immobiliers</h1>
+  </div>
 </div>
 
-<div style="width: 100%; height: 300px; margin-bottom:25px; margin-top: 25px;"
+
+
+  <div class="text-center">
+  <%= link_to "Nouvel Appartement", new_estate_path, class: "btn btn-primary" %>
+</div>
+
+<% @estates.each do |estate| %>
+    <%= link_to estate_path(estate), style: "text-decoration: none; color: inherit;" do %>
+      <div class="container my-5">
+      <div class="card-trip">
+        <figure class="image">
+        </figure>
+        <div class="card-trip-infos">
+          <div>
+            <h2><%= estate.name %></h2>
+            <p><%= estate.description %></p>
+          </div>
+          <h2 class="card-trip-pricing"><%= number_to_currency(estate.price) %></h2>
+        </div>
+      </div>
+      </div>
+    <% end %>
+  <% end %>
+
+<div class="container" style="width: 100%; height: 300px; margin-bottom:25px; margin-top: 25px;"
   data-controller="map"
   data-map-markers-value="<%= @markers.to_json %>"
   data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
 </div>
-
-<ul>
-  <% @estates.each do |estate| %>
-    <li>
-    <%= link_to estate.name, estate_path(estate) %>
-    <p><%= estate.description %></p>
-    <p><%= estate.address %></p>
-    <p>Prix : <%= number_to_currency(estate.price) %></p>
-    </li>
-  <% end %>
-</ul>
-
-<%= link_to "Nouvel Appartement", new_estate_path %>
+<%= render partial: "shared/footer"%>
