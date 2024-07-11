@@ -1,0 +1,19 @@
+
+.page-liste-banner {
+  background-size: cover;
+  background-position: center;
+  padding: 150px 0;
+}
+
+
+.page-liste-banner h1 {
+  color: orange;
+  text-align: center;
+  font-family: Bahnschrift;
+  font-style: normal;
+  line-height: normal;
+  font-size: calc(var(--px) * 37);
+  font-weight: 600;
+  letter-spacing: calc(var(--px) * 1.85);
+  text-transform: uppercase;
+}
