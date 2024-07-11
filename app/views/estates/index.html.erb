@@ -1,9 +1,13 @@
-<h1>Liste des appartements</h1>
 
-<div style="width: 100%; height: 600px;"
+<div class="page-liste-banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://i.pinimg.com/564x/70/9c/85/709c850b624123f6f51bc658d3dc71c7.jpg);">
+    <h1>Liste des appartements</h1>
+</div>
+
+<div style="width: 100%; height: 300px; margin-bottom:25px; margin-top: 25px;"
   data-controller="map"
   data-map-markers-value="<%= @markers.to_json %>"
-  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+</div>
 
 <ul>
   <% @estates.each do |estate| %>
