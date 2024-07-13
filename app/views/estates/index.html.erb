@@ -1,37 +1,39 @@
-<%= render partial: "shared/navbar"%>
-<div class="container my-5">
-  <div class="text-center">
-    <h1 class="display-4 font-weight-bold mb-4">Ajouter une sélection de vos biens immobiliers</h1>
+<%= render partial: "shared/navbar" %>
+<div class="banner-container">
+  <div class="banner-content">
+    <h1 class="display-4 font-weight-bold mb-4">Trouvez Votre Bien De Rêve</h1>
+    <p class="lead">Découvrez une sélection exceptionnelle de biens immobiliers, locaux commerciaux et bureaux.</p>
+    <div class="text-center my-5">
+      <% if !user_signed_in? %>
+        <%= link_to "Se Connecter", new_user_session_path, class: "btn btn-secondary mr-2" %>
+        <%= link_to "S'inscrire", new_user_registration_path, class: "btn btn-primary" %>
+      <%else%>
+        <%= link_to "Nouvel Appartement", new_estate_path, class: "btn btn-primary" %>
+    </div>
   </div>
 </div>
-
-
-
-  <div class="text-center">
-  <%= link_to "Nouvel Appartement", new_estate_path, class: "btn btn-primary" %>
-</div>
-
-<% @estates.each do |estate| %>
+  <% @estates.each do |estate| %>
     <%= link_to estate_path(estate), style: "text-decoration: none; color: inherit;" do %>
       <div class="container my-5">
-      <div class="card-trip">
-        <figure class="image">
-        </figure>
-        <div class="card-trip-infos">
-          <div>
-            <h2><%= estate.name %></h2>
-            <p><%= estate.description %></p>
+        <div class="card-trip">
+          <figure class="image">
+          </figure>
+          <div class="card-trip-infos">
+            <div>
+              <h2><%= estate.name %></h2>
+              <p><%= estate.description %></p>
+              <p><%= estate.address %></p>
+            </div>
+            <h2 class="card-trip-pricing"><%= number_to_currency(estate.price) %></h2>
           </div>
-          <h2 class="card-trip-pricing"><%= number_to_currency(estate.price) %></h2>
         </div>
       </div>
-      </div>
     <% end %>
-  <% end %>
-
-<div class="container" style="width: 100%; height: 300px; margin-bottom:25px; margin-top: 25px;"
-  data-controller="map"
-  data-map-markers-value="<%= @markers.to_json %>"
-  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
-</div>
-<%= render partial: "shared/footer"%>
+<% end %>
+  <div class="container" style="width: 100%; height: 300px; margin-bottom: 25px; margin-top: 25px;"
+    data-controller="map"
+    data-map-markers-value="<%= @markers.to_json %>"
+    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+  </div>
+<%= render partial: "shared/footer" %>
+<% end %>
