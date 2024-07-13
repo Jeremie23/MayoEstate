@@ -10,6 +10,7 @@
 Offer.destroy_all
 Estate.destroy_all
 
+User.create(email:"admin@gmail.com, password: 123456")
 
 Estate.create(
   name: "Riad Al Zahra",
